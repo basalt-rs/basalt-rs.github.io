@@ -17,14 +17,14 @@ jobs:
           mkdir bin
           curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.43/mdbook-v0.4.43-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
           mv bin/mdbook ./
-          rm -r bin'
+          rm -r bin
 
       - name: Install mdbook-pagetoc
         run: |
           mkdir bin
           curl -sSL https://github.com/slowsage/mdbook-pagetoc/releases/download/v0.2.0/mdbook-pagetoc-v0.2.0-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
           mv bin/mdbook-pagetoc ./
-          rm -r bin'
+          rm -r bin
 
       - name: Build pages
         run: './mdbook build'
