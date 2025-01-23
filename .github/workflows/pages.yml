@@ -1,0 +1,37 @@
+name: GH Pages Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install mdbook
+        run: |
+          mkdir bin
+          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.43/mdbook-v0.4.43-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
+          mv bin/mdbook ./
+          rm -r bin'
+
+      - name: Install mdbook-pagetoc
+        run: |
+          mkdir bin
+          curl -sSL https://github.com/slowsage/mdbook-pagetoc/releases/download/v0.2.0/mdbook-pagetoc-v0.2.0-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
+          mv bin/mdbook-pagetoc ./
+          rm -r bin'
+
+      - name: Build pages
+        run: './mdbook build'
+
+      - name: Deploy to GitHub Pages
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
+          publish_dir: book
