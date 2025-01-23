@@ -2,7 +2,7 @@
 authors = ["basalt-rs"]
 language = "en"
 title = "Basalt Manual"
-description = "Manual for using basalt-rs and corrosponding tools"
+description = "Manual for using basalt-rs and corresponding tools"
 
 [build]
 create-missing = false
