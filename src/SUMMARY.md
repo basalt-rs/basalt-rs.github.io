@@ -3,6 +3,9 @@
 --- 
 
 - [Getting Started](./getting-started/index.md)
-- [Configuration]()
-    - [Defining Packets]()
+- [Configuration](./config/index.md)
+    - [Runtime](./config/runtime.md)
+    - [Setup](./config/setup.md)
+    - [Account](./config/account.md)
+    - [Packet](./config/packet.md)
 - [Basalt CLI]()
