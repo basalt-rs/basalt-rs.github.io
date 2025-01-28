@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Getting Started - Basalt Manual</title>
+        <title>Packet - Basalt Manual</title>
 
 
         <!-- Custom HTML head -->
@@ -14,7 +14,7 @@
         <!-- Reference: https://ogp.me/ -->
         
         <meta name="author" content="basalt-rs">
-        <meta property="og:title" content="Getting Started - Basalt Manual">
+        <meta property="og:title" content="Packet - Basalt Manual">
         <meta property="og:type" content="website">
         <meta property="og:image" content="https://avatars.githubusercontent.com/u/191409478">
         <meta property="og:description" content="Manual for using basalt-rs and corresponding tools">
@@ -166,16 +166,107 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+                        <h1 id="packet-configuration"><a class="header" href="#packet-configuration">Packet Configuration</a></h1>
+<p>Configuration for the packet of questions that is used for prompts and
+testing of problems.</p>
+<pre><code class="language-toml">[packet]
+title = "Example Packet"
+preamble = '''
+This is an optional preamble that has markdown support.  This preamble
+will be shown on the first page of the packet.
+'''
+
+[[packet.problems]]
+title = "Reversing a string"
+description = '''
+Accept a single string as input.  You must reverse the order of this
+string and print it back out.
+'''
+
+[[packet.problems.tests]]
+input = "hello"
+output = "olleh"
+visible = true
+trim_output = true
+
+[[packet.problems.tests]]
+input = "world"
+output = "dlrow"
+visible = true
+trim_output = true
+
+[[packet.problems.tests]]
+input = ""
+output = ""
+trim_output = true
+
+[[packet.problems.tests]]
+input = "aa"
+output = "aa"
+trim_output = true
+
+[[packet.problems.tests]]
+input = "racecar"
+output = "racecar"
+trim_output = true
+</code></pre>
+<h2 id="problems"><a class="header" href="#problems">Problems</a></h2>
+<p>The <code>problems</code> array contains all of the problems that will be presented
+to the user in packet.</p>
+<ul>
+<li><code>title</code> - the title of this problem, this will also be used as a preview
+in the UI.</li>
+<li><code>description</code> - Detailed description of this problem, supports Markdown</li>
+<li><code>supported_languages</code> - Optional list of languages that are allowed
+for this problem.  All languages must appear in the <a href="./languages.html">Languages
+configuration</a>.</li>
+</ul>
+<h3 id="tests"><a class="header" href="#tests">Tests</a></h3>
+<p>Each problem contains a suite of tests that will be used to validate the
+code that the competitor has submitted.</p>
+<ul>
+<li><code>input</code> - Input that will be provided to the competitor's program
+through standard input</li>
+<li><code>output</code> - Expected output that the competitor's code should produce
+out to standard output</li>
+<li><code>trim_output</code> - Whether the output should be have starting and trailing
+whitespace removed before comparing.  i.e., <code>" hello "</code> would match
+<code>"hello"</code></li>
+<li><code>visible</code> - Whether this test should be visible to the user.  The
+first visible test listed will be shown as an example in the problem
+description.</li>
+</ul>
+<h2 id="imports"><a class="header" href="#imports">Imports</a></h2>
+<p>Many items in the packet spec may be imported from neighbouring files.</p>
+<p><code>packet</code>:</p>
+<pre><code class="language-toml">packet = { import = "./packet.toml" }
+</code></pre>
+<p><code>packet.preamble</code>:</p>
+<pre><code class="language-toml">[packet]
+preamble = { import = "./preamble.md" }
+</code></pre>
+<p><code>packet.problems</code>:</p>
+<pre><code class="language-toml">[[packet.problems]]
+import = "./problem1.toml"
+
+[[packet.problems]]
+import = "./problem2.toml"
+
+# OR
+
+[packet]
+problems = [{ import = "./problem1.toml" },
+            { import = "./problem2.toml" }]
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-
-                            <a rel="next prefetch" href="../config/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                            <a rel="prev" href="../config/account.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
+
 
                         <div style="clear: both"></div>
                     </nav>
@@ -183,10 +274,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-
-                    <a rel="next prefetch" href="../config/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                    <a rel="prev" href="../config/account.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
+
             </nav>
 
         </div>

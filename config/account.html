@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Getting Started - Basalt Manual</title>
+        <title>Account - Basalt Manual</title>
 
 
         <!-- Custom HTML head -->
@@ -14,7 +14,7 @@
         <!-- Reference: https://ogp.me/ -->
         
         <meta name="author" content="basalt-rs">
-        <meta property="og:title" content="Getting Started - Basalt Manual">
+        <meta property="og:title" content="Account - Basalt Manual">
         <meta property="og:type" content="website">
         <meta property="og:image" content="https://avatars.githubusercontent.com/u/191409478">
         <meta property="og:description" content="Manual for using basalt-rs and corresponding tools">
@@ -166,14 +166,57 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+                        <h1 id="account-configuration"><a class="header" href="#account-configuration">Account Configuration</a></h1>
+<p>The two types of accounts, <a href="#admin-accounts">admin</a> and
+<a href="#competitor-accounts">competitor</a> can be specified using the toml array
+syntax.</p>
+<p>Competitor accounts and admin accounts must not have the same names.</p>
+<pre><code class="language-toml">[[accounts.admins]]
+name = "Host"
+password = "HostP@ssword1"
+
+[[accounts.competitors]]
+name = "Team1"
+password = "Team1P@ssword"
+
+[[accounts.competitors]]
+name = "Team2"
+password = "Team2P@ssword"
+</code></pre>
+<h2 id="admin-accounts"><a class="header" href="#admin-accounts">Admin Accounts</a></h2>
+<p>Admin accounts have access to the host view when using the basalt app
+and can manage the competition at run time.</p>
+<h2 id="competitor-accounts"><a class="header" href="#competitor-accounts">Competitor Accounts</a></h2>
+<p>Competitor accounts have access to the competitor view when using the
+basalt app and will test and submit their solutions.</p>
+<h2 id="imports"><a class="header" href="#imports">Imports</a></h2>
+<p>Account configuration may be imported from another toml file.</p>
+<pre><code class="language-toml"># In config.toml
+accounts = { import = "./accounts.toml" }
+</code></pre>
+<pre><code class="language-toml"># In accounts.toml
+[[admins]]
+name = "Host"
+password = "HostP@ssword1"
+
+[[competitors]]
+name = "Team1"
+password = "Team1P@ssword"
+
+[[competitors]]
+name = "Team2"
+password = "Team2P@ssword"
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../config/languages.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
-                            <a rel="next prefetch" href="../config/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../config/packet.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -183,8 +226,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../config/languages.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
-                    <a rel="next prefetch" href="../config/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../config/packet.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
