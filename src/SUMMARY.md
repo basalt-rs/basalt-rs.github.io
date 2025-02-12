@@ -1,6 +1,6 @@
 # Summary
 
---- 
+---
 
 - [Getting Started](./getting-started/index.md)
 - [Configuration](./config/index.md)
@@ -9,4 +9,5 @@
     - [Languages](./config/languages.md)
     - [Account](./config/account.md)
     - [Packet](./config/packet.md)
-- [Basalt CLI]()
+    - [Hashing](./config/hashing.md)
+- [Basalt CLI](./cli/index.md)
