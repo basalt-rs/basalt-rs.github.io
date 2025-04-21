@@ -14,3 +14,5 @@
     - [Packet](./config/packet.md)
     - [Hashing](./config/hashing.md)
 - [Basalt CLI](./cli/index.md)
+    - [Packet Generation](./cli/packet.md)
+    - [Logins PDF Generation](./cli/logins.md)
