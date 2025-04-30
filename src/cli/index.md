@@ -11,6 +11,7 @@ The Basalt CLI is [Open Source](https://github.com/basalt-rs/basalt-cli).
 To build a server, you first must have a valid server configuration. By
 default this is a `basalt.toml` file in the current working directory, but
 any other valid file can be supplied.
+To get started with an example configuration, you can run the `basalt init` command.
 
 *NOTE: The Basalt Server leverages docker for security and portability*
 
